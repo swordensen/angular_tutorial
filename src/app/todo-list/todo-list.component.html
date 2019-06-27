@@ -1,0 +1,22 @@
+<mat-card>
+    <mat-card-header><mat-card-title>To Do List</mat-card-title></mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <mat-selection-list >
+            <mat-list-option *ngFor="let todo of todos;">{{todo}}</mat-list-option>
+        </mat-selection-list>
+        <ng-container *ngIf="showForm">
+        <mat-divider></mat-divider>
+        <form (ngSubmit)="addTodo(todo.value)">
+            <mat-form-field>
+                <input #todo matInput placeholder="add todo" type="text">
+            </mat-form-field>
+            <button type="submit" mat-mini-fab><mat-icon>send</mat-icon></button>
+        </form>
+    </ng-container>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions align="end">
+        <button mat-mini-fab (click)="toggleForm()"><mat-icon>{{showForm ? "close" : "add"}}</mat-icon></button>
+    </mat-card-actions>
+</mat-card>
